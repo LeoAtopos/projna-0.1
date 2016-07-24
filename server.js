@@ -5,12 +5,8 @@ var serveStatic = require('serve-static');
 
 var app = connect();
 
-function index(request, response, next){
-	//send the index home page.
-	response.writeHead(200,{"Context-Type":"text/plain"});
-	response.write("hahah");
-	response.end();
-	next();
+function index(request, response){
+	homepage(request, response);
 }
 
 function homepage(request, response) {
