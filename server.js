@@ -33,6 +33,7 @@ function send404Response(response){
 
 // app.use('/',index);
 app.use(serveStatic(__dirname + "/public"));
+app.use('/',index);
 app.use('/home',homepage);
 
 
