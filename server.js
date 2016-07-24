@@ -1,6 +1,7 @@
 var http = require("http");
 var connect = require("connect");
 var fs = require("fs");
+var serveStatic = require('serve-static');
 
 var app = connect();
 
@@ -31,6 +32,7 @@ function send404Response(response){
 }
 
 // app.use('/',index);
+app.use(serveStatic(__dirname + "/public"));
 app.use('/home',homepage);
 
 
