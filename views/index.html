@@ -1,0 +1,128 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<title>Projna-Build with Projects</title>
+	<link rel="shortcut icon" href="../public/images/logo.png" />
+	<link href="https://cdn.bootcss.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="mystyle.css" />
+</head>
+<body style="background: #E8EBEB;font-family:SimHei">
+	<!-- the control bar div with logo, guide link, login/join -->
+	<div align="center">
+		<div id = "header">
+			<img id = "logo" src="../public/images/logo.png" onclick="location.href='index.html'">
+			<input id = "search" placeholder="Search for Person / Project">
+			<a id = "search-button" href="#">
+          		<span class="glyphicon glyphicon-search"></span>
+        	</a>
+			<a id = "login" href="log-in.html">Log In</a>
+			<button id= "beProjna" onclick="location.href='sign-up.html'">Became a Projna</button>
+			<button id="projnaName">Projna Name</button>
+		</div>
+		<!-- the cover div with big image impression and slogan -->
+		<div id = "cover">
+			<span id = "brand">Projna</span><br>
+			<span id = "slogan1">Trust in Building Persons</span><br>
+			<span id = "slogan2">@Projects</span><br><br>
+			<a id = "learnmore" href="">- Learn More -</a><br>
+			<button id = "joinnow" onclick="location.href='sign-up.html'">Join Now</button>
+		</div>
+
+		<!-- the featured persons -->
+		<div class = "featureDiv" >
+			<div class = "featureDivHeader">
+				<span class ="featureNameSpan">
+					<h2>- Interesting Persons -</h2>
+				</span>
+				<span class = "featureMoreDiv">
+					<a href="">Explore More++</a>
+				</span>
+			</div>
+			<div class = "featureDivBody">
+				<div class ="person-div-unit">
+	      			<a href="#" class="thumbnail">
+	         			<img src="../public/images/per1-pic.jpg" class="img-circle" alt="pic" >
+		         		<span class="projna">Goover</span>
+		         		<span class="n-proj">2 projects</span>
+	         		</a>
+	         	</div>
+	         	<div class ="person-div-unit">
+	      			<a href="#" class="thumbnail">
+	         			<img src="../public/images/per2-pic.jpg" class="img-circle" alt="pic" >
+		         		<span class="projna">Steven Pinker</span>
+		         		<span class="n-proj">1 project</span>
+		         	</a>	         		
+	         	</div>
+			</div>
+		</div>
+
+		<!-- the featured projects -->
+		<div class = "featureDiv">
+			<div class="featureDivHeader">
+				<span class ="featureNameSpan">
+					<h2>- New Projects -</h2>
+				</span>
+				<span class = "featureMoreDiv">
+					<a href="">Explore More++</a>
+				</span>
+			</div>
+			<div class = "featureDivBody">
+				<div class ="project-div-unit">
+	      			<a href="#" class="thumbnail">
+	         			<img src="./../public/images/Pro1-pic.jpg" alt="pic">
+		         		<h6>Book Seeds</h6>
+		         		<p>Leave your knowledges for new generations by a book list</p>
+	         		</a>
+	         	</div>
+	         	<div class ="project-div-unit">
+	      			<a href="#" class="thumbnail">
+	         			<img src="./../public/images/Pro2-pic.jpg" alt="pic">         			
+		         		<h6>Epitaph Now</h6>
+		         		<p>Think about death to live better, explore web graveyard</p>
+		         	</a>	         		
+	         	</div>
+			</div>
+		</div>
+
+		<!-- the footer sect, with some notions and communication ways -->
+		<div id = "footer"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(document).ready(checkLogIn);
+	function checkLogIn(){
+		if(isLogged()){
+			$("#login").hide();
+			$("#beProjna").hide();
+			$("#projnaName").show();
+		}
+		else{
+			$("#login").show();
+			$("#beProjna").show();
+			$("#projnaName").hide();
+		}
+	}
+	function isLogged(){
+		var userInfo;
+		$.ajax({
+			type:"GET",url:"http://172.16.40.31:8081/checkSession",data:{},
+			success: function(msg){
+				alert("Sign Up Success");
+				userInfo = msg;
+			}
+		});
+		if (userInfo.success) return true;
+		else return false;
+	}
+</script>
+</html>
+
+<!-- 	<div id = "log">
+		<textarea></textarea><span>user name</span><br>
+		<textarea></textarea><span>user code</span><br>
+		<button>sign up</button>         <button>login</button>
+	</div> -->
+	<!-- the featured persons -->
